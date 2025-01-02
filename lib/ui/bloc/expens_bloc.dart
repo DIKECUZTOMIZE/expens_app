@@ -32,5 +32,14 @@ class ExpensBloc extends Bloc<ExpensEvent,ExpensState>{
       emit(ExpensLoadedState(mDataS: mdataB));
 
     },);
+
+     on<DeletEXpenss>((event, emit) async{
+       emit(ExpensLoadingState());
+       bool check= await dbHelper.deletExp(deletIdD: event.deletedIdE);
+       if(check){
+          mdataB =await dbHelper.fectsExpens();
+          emit(ExpensLoadedState(mDataS: mdataB));
+       }
+     },);
   }
 }

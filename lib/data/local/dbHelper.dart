@@ -133,6 +133,17 @@ class DbHelper {
     return newData;
     }
 
+
+    Future<bool>deletExp({required deletIdD})async{
+
+    var db = await initDB();
+
+    int rowsEffected = await db.delete(EXP_TABLE,
+    where:'$EXP_USER_COLUMN_ID = ?',whereArgs:[deletIdD] );
+    return rowsEffected >0;
+
+    }
+
   //   Future<List<Map<String,dynamic>> fectsNote()async{
   //
   //   var db = await initDB();

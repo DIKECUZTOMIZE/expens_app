@@ -11,7 +11,11 @@ class AddExpens extends ExpensEvent{
 
 }
 
-class  FectsExpenss extends ExpensEvent{
+class  FectsExpenss extends ExpensEvent{}
 
+class DeletEXpenss extends ExpensEvent{
+  var deletedIdE;
+
+  DeletEXpenss({required this.deletedIdE});
 }
 
