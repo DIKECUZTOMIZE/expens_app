@@ -1,12 +1,11 @@
 import 'package:exoenseapp/data/local/model/expenssmodel.dart';
 
-abstract class ExpensState {}
+ class ExpensState {}
 
 
 class ExpensInitialState extends ExpensState{}
 
 class ExpensLoadingState extends ExpensState{}
-
 
 class  ExpensLoadedState extends ExpensState{
 
@@ -18,3 +17,4 @@ class ExpensErorrState extends ExpensState{
   String errorMase;
   ExpensErorrState({required this.errorMase});
 }
+

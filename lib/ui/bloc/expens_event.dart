@@ -1,8 +1,7 @@
 import 'package:exoenseapp/data/local/model/expenssmodel.dart';
 
+
 abstract class ExpensEvent {}
-
-
 
 class AddExpens extends ExpensEvent{
 
@@ -13,9 +12,7 @@ class AddExpens extends ExpensEvent{
 
 class  FectsExpenss extends ExpensEvent{}
 
-class DeletEXpenss extends ExpensEvent{
-  var deletedIdE;
 
-  DeletEXpenss({required this.deletedIdE});
-}
+
+
 

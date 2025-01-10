@@ -1,26 +1,25 @@
 import 'dart:io';
-
-import 'package:exoenseapp/data/local/dbHelper.dart';
-import 'package:exoenseapp/data/local/model/catModel.dart';
 import 'package:exoenseapp/data/local/model/expenssmodel.dart';
 import 'package:exoenseapp/domain/appConstant.dart';
 import 'package:exoenseapp/domain/ui_helper.dart';
 import 'package:exoenseapp/ui/bloc/expens_bloc.dart';
 import 'package:exoenseapp/ui/bloc/expens_event.dart';
-import 'package:exoenseapp/ui/dashboard_page.dart';
-import 'package:exoenseapp/ui/homePage.dart';
+import 'package:exoenseapp/ui/bottome_naviget_page.dart';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-class Secondpage extends StatefulWidget {
+class AddExpPage extends StatefulWidget {
   @override
-  State<Secondpage> createState() => _SecondpageState();
+  State<AddExpPage> createState() => _AddExpPageState();
 }
 
-class _SecondpageState extends State<Secondpage> {
+class _AddExpPageState extends State< AddExpPage> {
+
+
   var titleController = TextEditingController();
   var descController = TextEditingController();
   TextEditingController amtController = TextEditingController();
@@ -30,6 +29,7 @@ class _SecondpageState extends State<Secondpage> {
 
   /// Debit And credit:
   String expensType = 'Debit';
+
 
   List<String> expensTypeList = ['Debit', 'Credit', 'Loan', 'Brows', 'Lend'];
 
@@ -50,20 +50,27 @@ class _SecondpageState extends State<Secondpage> {
                 decoration: getTextField(
                     mHintU: 'Enter Your title', mLabelU: 'title'),
               ),
+
               mSpacing(),
+
               TextField(
                 controller: descController,
                 decoration:
                     getTextField(mHintU: 'Enter Your desc', mLabelU: 'desc'),
               ),
+
               mSpacing(),
+
+
               TextField(
                 controller: amtController,
                 decoration: getTextField(
                         mHintU: 'Enter Your amount', mLabelU: 'amount')
                     .copyWith(prefixText: '\$ '),
               ),
+
               mSpacing(),
+
               DropdownMenu(
                   width: double.infinity,
                   inputDecorationTheme: InputDecorationTheme(
@@ -72,16 +79,25 @@ class _SecondpageState extends State<Secondpage> {
                     focusedBorder: OutlineInputBorder(
                         borderRadius: BorderRadius.circular(10)),
                   ),
+
                   initialSelection: expensType,
+
                   onSelected: (value) {
                     expensType = value ?? 'Debit';
+
+                    // if(value == "Debit"){
+                    //   expensType = '${Colors.red}';
+                    // }
+
                     setState(() {});
                   },
                   dropdownMenuEntries: expensTypeList.map((expensType) {
                     return DropdownMenuEntry(
                         value: expensType, label: expensType);
                   }).toList()),
+
               mSpacing(),
+
               InkWell(
                 onTap: () {
                   showModalBottomSheet(
@@ -145,7 +161,9 @@ class _SecondpageState extends State<Secondpage> {
                       : Center(child: Text('Choosee')),
                 ),
               ),
+
               mSpacing(),
+
               Container(
                   height: 60,
                   width: double.infinity,
@@ -188,6 +206,7 @@ class _SecondpageState extends State<Secondpage> {
                       child: Center(child: Text(mFormat.format(selstedDate).toString())))),
 
               mSpacing(),
+
               ElevatedButton(
                   onPressed: () async {
                     if (titleController.text.isNotEmpty &&
@@ -214,7 +233,7 @@ class _SecondpageState extends State<Secondpage> {
                       Navigator.pushReplacement(
                           context,
                           MaterialPageRoute(
-                            builder: (context) => Homepage(),
+                            builder: (context) =>  BottomNaviget(),
                           ));
 
                       ScaffoldMessenger.of(context).showSnackBar(

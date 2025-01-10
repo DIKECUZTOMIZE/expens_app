@@ -1,6 +1,6 @@
 import 'package:exoenseapp/data/local/dbHelper.dart';
 import 'package:exoenseapp/domain/ui_helper.dart';
-import 'package:exoenseapp/ui/homePage.dart';
+import 'package:exoenseapp/ui/bottome_naviget_page.dart';
 import 'package:exoenseapp/ui/on_boarding/sing_up_page.dart';
 import 'package:flutter/material.dart';
 
@@ -85,7 +85,7 @@ class _LoginPageState extends State<LoginPage> {
                    passwordDA: passController.text);
               
               if(check){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) => Homepage(),));
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) =>  BottomNaviget(),));
               }else{
                 ScaffoldMessenger.of(context).showSnackBar(SnackBar(
                     backgroundColor: Colors.red,
